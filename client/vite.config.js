@@ -24,7 +24,7 @@ export default defineConfig(({ mode }) => {
     plugins: [react({ fastRefresh: true })],
     resolve: { alias },
     server: {
-      port: 3000,
+      port: 5173,
       open: true,
       host: true,
       cors: true,

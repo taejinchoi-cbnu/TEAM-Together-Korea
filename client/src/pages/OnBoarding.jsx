@@ -1,7 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
 function OnBoarding() {
+  const navigate = useNavigate();
+
   const handleStart = () => {
-    navigator("/login");
+    navigate("/login");
   };
+
   return (
     <>
       <p>onBoarding</p>

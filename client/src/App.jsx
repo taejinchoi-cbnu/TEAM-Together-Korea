@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import BottomNav from "./components/BottomNav.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import OnBoarding from "./pages/OnBoarding.jsx";
 import Login from "./pages/Login.jsx";
 import ChatBot from "./pages/ChatBot.jsx";
@@ -12,15 +13,7 @@ import Profile from "./pages/Profile.jsx";
 
 function AppContent() {
   const location = useLocation();
-  const hideHeaderRoutes = [
-    "/",
-    "/onBoarding",
-    "/login",
-    "/signup",
-    "/chatbot",
-    "/chatbot/session",
-  ];
-  const shouldShowHeader = !hideHeaderRoutes.includes(location.pathname);
+  const shouldShowHeader = location.pathname === "/home";
 
   return (
     <>
@@ -29,12 +22,54 @@ function AppContent() {
         <Route path="/" element={<OnBoarding />} />
         <Route path="/onBoarding" element={<OnBoarding />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/chatbot" element={<ChatBot />} />
-        <Route path="/chatbot/session" element={<ChatSession />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/roadmap" element={<RoadMap />} />
-        <Route path="/info" element={<Infos />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/chatbot"
+          element={
+            <ProtectedRoute>
+              <ChatBot />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/chatbot/session"
+          element={
+            <ProtectedRoute>
+              <ChatSession />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/roadmap"
+          element={
+            <ProtectedRoute>
+              <RoadMap />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/info"
+          element={
+            <ProtectedRoute>
+              <Infos />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       {shouldShowHeader && <BottomNav />}
     </>

@@ -1,5 +1,4 @@
 import ChatBotBtn from "../components/chatbotBtn";
-
 function Home() {
   return (
     <>

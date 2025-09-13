@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { supabase } from "../lib/supabaseClient";
+import "../styles/pages/loginPageStyle.css";
 
 function Login() {
   const [loading, setLoading] = useState(false);
@@ -33,7 +34,7 @@ function Login() {
   return (
     <div className="login-container">
       <div className="login-content">
-        <h1>로그인</h1>
+        <img className="main-icon" src="/logo_header.svg" />
 
         <button
           onClick={handleGoogleLogin}
