@@ -1,0 +1,203 @@
+/* 전체 페이지 컨테이너 */
+.chatbot-page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 0;
+  margin: 0;
+  background-color: #ffffff;
+  font-family:
+    "Noto Sans",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    sans-serif;
+  box-sizing: border-box;
+}
+
+/* 헤더 스타일 */
+.chatbot-header {
+  height: 64px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #ffffff;
+}
+
+.chatbot-logo {
+  width: 85px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.chatbot-close-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background-color: #cfe3ff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.chatbot-close-btn:hover {
+  background-color: #b8d4ff;
+}
+
+.chatbot-close-btn img {
+  width: 40px;
+  height: 40px;
+}
+
+/* 콘텐츠 영역 */
+.chatbot-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 32px;
+  padding: 24px 16px;
+  background-color: #ffffff;
+  overflow-y: auto;
+}
+
+/* 인사 섹션 */
+.greeting-section {
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.greeting-title {
+  font-size: 20px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: -0.4px;
+  text-align: left;
+  color: #000000;
+  margin: 0;
+}
+
+/* 예시 질문 섹션 */
+.example-questions-section {
+  align-self: stretch;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #f6f7fa;
+}
+
+.section-title {
+  flex-grow: 0;
+  font-size: 15px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: -0.28px;
+  text-align: left;
+  color: var(--gray50);
+  margin: 0;
+}
+
+.questions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.question-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.question-item:hover {
+  opacity: 0.8;
+}
+
+.question-item img {
+  width: 24px;
+  height: 24px;
+  flex-grow: 0;
+  padding: 2.5px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.question-text {
+  flex-grow: 1;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: -0.28px;
+  text-align: left;
+  color: #30343b;
+}
+
+/* 푸터 영역 */
+.chatbot-footer {
+  padding: 16px 16px 24px 16px;
+  background-color: #ffffff;
+}
+
+.question-btn {
+  height: 52px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: var(--primary30);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: -0.32px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.question-btn:hover {
+  background-color: #263fdf;
+}
+
+.question-btn:active {
+  background-color: #112185;
+}

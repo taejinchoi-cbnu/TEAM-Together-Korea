@@ -1,0 +1,25 @@
+/* Header Component */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  background-color: transparent;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.headerLogo {
+  width: 82px;
+  height: 28px;
+  cursor: pointer;
+}
+
+.headerNoti {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  color: var(--gray50);
+}

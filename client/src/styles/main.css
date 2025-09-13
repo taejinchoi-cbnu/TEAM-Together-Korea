@@ -1,0 +1,44 @@
+:root {
+  --white: #ffffff;
+  --gray10: #f6f7fa;
+  --gray20: #e1e3e8;
+  --gray30: #c6c8cf;
+  --gray40: #9a9da6;
+  --gray50: #656873;
+
+  --primary10: #cfe3ff;
+  --primary15: #85b1ff;
+  --primary20: #4f87ff;
+  --primary30: #263fdf;
+  --primary40: #112185;
+  --primary50: #070e38;
+
+  --secondary10: #beede7;
+  --secondary20: #80d9cd;
+  --secondary30: #00c4aa;
+  --secondary40: #00a18b;
+  --secondary50: #006e5f;
+
+  --teriary10: #ffe4d4;
+  --teriary20: #ffcbab;
+  --teriary30: #ff9a69;
+  --teriary40: #f77434;
+  --teriary50: #e54c02;
+
+  --error10: #ffc8c4;
+  --error30: #f04438;
+}
+
+/* Global styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--gray10);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR",
+    sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}
