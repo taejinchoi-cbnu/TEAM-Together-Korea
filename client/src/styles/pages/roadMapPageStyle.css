@@ -142,6 +142,13 @@
   background-color: var(--white);
   border-radius: 12px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.content-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
 }
 
 .card-title {
@@ -160,6 +167,11 @@
   font-size: 12px;
   font-weight: 600;
   border-radius: 8px;
+}
+
+.status-badge.completed {
+  background-color: var(--primary20);
+  color: white;
 }
 
 .card-title h2 {
@@ -235,6 +247,12 @@
   align-items: center;
   position: relative;
   width: 100%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.roadmap-item:hover {
+  transform: scale(1.05);
 }
 
 .item-row {
@@ -359,7 +377,7 @@
   top: 80px;
   left: 52%;
   z-index: 0;
-  width: 420px;
+  width: 450px;
   height: 234px;
   color: black;
 }

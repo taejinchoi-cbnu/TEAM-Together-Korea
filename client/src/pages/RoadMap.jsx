@@ -1,43 +1,76 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { getRoadmapProgress, getItemState, isAllItemsCompleted } from "../utils/roadmapProgress";
 import "../styles/pages/roadMapPageStyle.css";
 
 function RoadMap() {
   const [activeTab, setActiveTab] = useState("기초");
+  const [allCompleted, setAllCompleted] = useState(false);
+  const navigate = useNavigate();
 
   const tabs = ["기초", "정기", "특별교육"];
 
-  const eduItems = [
+  // 기본 로드맵 데이터 (텍스트는 고정)
+  const baseEduItems = [
     {
       roadmapText: "작업장별\n위험요소 식별\n및 안전수칙",
-      isComplete: true,
-      state: "completed",
     },
     {
       roadmapText: "개인보호구\n착용법 및 관리\n방법",
-      isComplete: true,
-      state: "completed",
     },
     {
       roadmapText: "기계·장비\n안전 조작법",
-      isComplete: true,
-      state: "completed",
     },
     {
       roadmapText: "화학물질 취급시\n주의사항",
-      isComplete: true,
-      state: "completed",
     },
     {
       roadmapText: "응급처치 및\n사고 대응요령",
-      isComplete: false,
-      state: "normal",
     },
     {
       roadmapText: "Quiz",
-      isComplete: false,
-      state: "disable",
     },
   ];
+
+  // localStorage에서 진행도를 로드하여 초기상태 설정
+  const [eduItems, setEduItems] = useState(() => {
+    const progress = getRoadmapProgress();
+    return baseEduItems.map((item, index) => {
+      const itemState = getItemState(index, progress.completedItems);
+      return {
+        ...item,
+        ...itemState
+      };
+    });
+  });
+
+  // 초기 완료 상태 설정
+  useEffect(() => {
+    setAllCompleted(isAllItemsCompleted());
+  }, []);
+
+  // 페이지 재진입 시 진행도 업데이트
+  useEffect(() => {
+    const updateProgress = () => {
+      const progress = getRoadmapProgress();
+      const updatedItems = baseEduItems.map((item, index) => {
+        const itemState = getItemState(index, progress.completedItems);
+        return {
+          ...item,
+          ...itemState
+        };
+      });
+      setEduItems(updatedItems);
+      setAllCompleted(isAllItemsCompleted());
+    };
+
+    // 페이지 포커스 시 상태 업데이트 (다른 페이지에서 돌아오는 경우)
+    window.addEventListener('focus', updateProgress);
+
+    return () => {
+      window.removeEventListener('focus', updateProgress);
+    };
+  }, [baseEduItems]);
 
   const handleMenuClick = () => {
     console.log("Menu clicked");
@@ -46,6 +79,15 @@ function RoadMap() {
   const handleTabClick = (tab) => {
     setActiveTab(tab);
     console.log("Tab clicked:", tab);
+  };
+
+  const handleItemClick = (item, index) => {
+    if (item.roadmapText === "Quiz") {
+      navigate("/quiz");
+    }
+    if (item.roadmapText === "응급처치 및\n사고 대응요령") {
+      navigate("/roadmap-detail");
+    }
   };
 
   return (
@@ -81,7 +123,9 @@ function RoadMap() {
       {/* Content Card Section */}
       <div className="content-card">
         <div className="card-title">
-          <span className="status-badge">진행중</span>
+          <span className={`status-badge ${allCompleted ? 'completed' : ''}`}>
+            {allCompleted ? '이수 완료' : '진행중'}
+          </span>
           <h2>기초 산업안전 보건교육</h2>
         </div>
         <div className="card-text">
@@ -115,7 +159,11 @@ function RoadMap() {
           {[0, 1, 2, 5, 4, 3].map((originalIndex, displayIndex) => {
             const item = eduItems[originalIndex];
             return (
-              <div key={originalIndex} className="roadmap-item">
+              <div
+                key={originalIndex}
+                className="roadmap-item"
+                onClick={() => handleItemClick(item, originalIndex)}
+              >
                 <div className="item-row">
                   <div className={`circle-container ${item.state}`}>
                     {item.isComplete ? (

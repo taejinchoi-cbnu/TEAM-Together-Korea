@@ -8,8 +8,12 @@ import ChatBot from "./pages/ChatBot.jsx";
 import ChatSession from "./pages/ChatSession.jsx";
 import Home from "./pages/Home.jsx";
 import RoadMap from "./pages/RoadMap.jsx";
+import RoadDetail from "./pages/RoadMapDetail.jsx";
 import Infos from "./pages/Infos.jsx";
 import Profile from "./pages/Profile.jsx";
+import Video from "./pages/Video.jsx";
+import Quiz from "./pages/Quiz.jsx";
+import QuizComplete from "./pages/QuizComplete.jsx";
 
 function AppContent() {
   const location = useLocation();
@@ -54,6 +58,38 @@ function AppContent() {
           element={
             <ProtectedRoute>
               <RoadMap />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/roadmap-detail"
+          element={
+            <ProtectedRoute>
+              <RoadDetail />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/roadmap-detail-video"
+          element={
+            <ProtectedRoute>
+              <Video />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/quiz"
+          element={
+            <ProtectedRoute>
+              <Quiz />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/quiz-complete"
+          element={
+            <ProtectedRoute>
+              <QuizComplete />
             </ProtectedRoute>
           }
         />

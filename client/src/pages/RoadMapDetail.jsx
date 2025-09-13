@@ -1,4 +1,17 @@
+import { useNavigate } from "react-router-dom";
+import "../styles/pages/roadMapDetailStyle.css";
+
 function RoadMapDetail() {
+  const navigate = useNavigate();
+
+  const handleBtnClick = () => {
+    navigate("/home");
+  };
+
+  const handlePlayBtnClick = () => {
+    navigate("/roadmap-detail-video");
+  };
+
   const detailContents = [
     {
       icons: "/calendar_icon.svg",
@@ -18,13 +31,16 @@ function RoadMapDetail() {
     },
   ];
   return (
-    <>
-      <header>
-        <img src="/back_icon.svg" alt="back" />
+    <div className="roadmap-detail-container">
+      <header className="detail-header">
+        <img src="/back_icon.svg" alt="back" onClick={handleBtnClick} />
         <h2>응급처치 및 사고 대응요령</h2>
       </header>
       <div className="detail-video">
         <img src="/demo_video.svg" alt="video" />
+        <div className="play-button" onClick={handlePlayBtnClick}>
+          <div className="play-icon">▶</div>
+        </div>
       </div>
       <div className="detail-content">
         <h2>응급처치 및 사고 대응요령</h2>
@@ -34,10 +50,15 @@ function RoadMapDetail() {
           수 있는 순서를 익힙니다.
         </p>
         <div className="detail-content-infos">
-          {/* detailContents map으로 생성 */}
+          {detailContents.map((item, index) => (
+            <div key={index} className="info-item">
+              <img src={item.icons} alt="icon" />
+              <span>{item.text}</span>
+            </div>
+          ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
