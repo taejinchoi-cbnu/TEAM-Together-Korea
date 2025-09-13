@@ -14,6 +14,9 @@ import Profile from "./pages/Profile.jsx";
 function AppContent() {
   const location = useLocation();
   const shouldShowHeader = location.pathname === "/home";
+  const shouldShowNav = ["/home", "/roadmap", "/info", "/profile"].includes(
+    location.pathname
+  );
 
   return (
     <>
@@ -71,7 +74,7 @@ function AppContent() {
           }
         />
       </Routes>
-      {shouldShowHeader && <BottomNav />}
+      {shouldShowNav && <BottomNav />}
     </>
   );
 }
